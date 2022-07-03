@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>First From</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka&family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Secular+One&family=Varela+Round&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+        <script src="js/scripts.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body dir="rtl">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3"></div>
+                <div class="col-lg-6"> 
+                    <div id="ui">
+                        <form id="myform" class="form-group" action="http://se.shenkar.ac.il/teach/web1/get_form3.php" onsubmit="changeView(this);" method="GET">
+                            
+                            <h1>מחולל טפסי בריחה<br> מוועדת משמעת</h1>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <label>שם מלא:</label>
+                                    <input id="nickname" class="form-control" type="text" name="fullName" placeholder="כינוי" pattern="^[א-תa-zA-Z]+ [א-תa-zA-Z]+$" required>
+                                    <small>מחרוזות עם רווח</small> 
+                                </div>
+                                <div class="col-lg-6">
+                                    <label>מספר טלפון:</label>
+                                    <input id="phoneNumber" required class="form-control" type="tel" name="phone" placeholder="רצוי מספר מזויף" pattern="^[0-9]{9,10}$"> 
+                                    <small>9 או 10 ספרות בלבד</small>
+                                </div>
+                                <label>כתובת אימייל:
+                                    <input class="form-control" type="email" name="mail" placeholder="e.g. mercy_me@gmail.com"> 
+                                </label>
+                                <label>סיסמא:
+                                    <input class="form-control" type="password" name="pass" pattern=".*[0-9].*" required placeholder="e.g. I would kill for 100 in web&cloud">
+                                </label>
+                                <small>לפחות ספרה אחת</small>
+                                <label>אתר:
+                                    <input class="form-control" type="url" name="website" placeholder="e.g. http://notGuilty.com"> 
+                                </label>
+                                <div class="col-lg-4">
+                                    <label>שעות שינה הלילה:
+                                        <input class="form-control" type="number" name="coffee" placeholder="מצוי, לא רצוי" required> 
+                                    </label>
+                                </div> 
+                                <div class="col-lg-3">
+                                    <label>גיל:
+                                        <select class="form-control" name="age" min="21" max="28" required>
+                                            <script>addAge()</script>
+                                        </select>
+                                    </label>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label><span>מין:</span></label>
+                                    <div class="col-lg-9">
+                                        <lable><input type="radio" name="gender" value="male">&nbsp;זכר</lable>
+                                        <lable><input type="radio" name="gender" value="female" checked >&nbsp;נקבה</lable>
+                                    </div>
+                                </div>
+                                <label for="customRange3" class="form-label">מידת הכעס של ד"ר יונית:
+                                    <input type="range" class="form-range" min="1" max="10" name="temper">    
+                                    <datalist id="tickmarks">
+                                    <option value="1" label="פנייה ב'תגידי'"></option>
+                                    <option value="10" label="אין דרישות מינימום"></option>
+                                    </datalist>
+                                </label>
+                                <label>מה המוטו שלך?
+                                    <textarea class="form-control" name="address" rows="2" cols="30" placeholder="כשהחיים מביאים לך לימונים תכין לימונצ'לו" required></textarea>
+                                </label>
+                                <label id="flexCheckChecked"><span>תירוצים:</span></label>
+                                <label>
+                                    <input type="checkbox" name="interests[]" class="form-check-input" value="גוגל העתיק ממני" for="flexCheckChecked">&emsp;גוגל העתיק ממני לא אני ממנו 
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="interests[]" class="form-check-input" value="הייתה הפסקת חשמל הכל נכבה!" for="flexCheckChecked">&emsp;הייתה הפסקת חשמל הכל נכבה! 
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="interests[]" class="form-check-input" value="סבתא שלי מתה! אז מה אם זאת הפעם הרביעית?! " for="flexCheckChecked">&emsp;סבתא שלי מתה! אז מה אם זאת הפעם הרביעית? 
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="interests[]" class="form-check-input" value="יש לי קעקוע של דייקסטרה מאז שאני ילד" for="flexCheckChecked">&emsp;יש לי קעקוע של דייקסטרה מאז שאני ילד מה הקשר המבחן באלגו'?  
+                                </label>
+                                <label>
+                                    <input type="checkbox" name="interests[]" class="form-check-input" value="לא העתקתי, עשיתי מתיחות לצוואר" for="flexCheckChecked">&emsp;לא העתקתי, עשיתי מתיחות לצוואר 
+                                </label>
+                                <label>
+                                    <input id="submit-button" type="submit" value="צור טופס" class="btn btn-primary">
+                                </label>
+                            </div>
+                        </form>
+                        <p>
+                            <br>
+                            * החברה לא לוקחת אחריות על השלכות הגשת עירעור זה ואינה מתחייבת להצלחתו.<br> החברה מזהירה מפני תופעות הלוואי הבאות:
+                            שריפת הקשר עם המרצים,
+                            קבלת עונש חמור יותר מהמתוכנן, בכי רב (של ממלא הטופס)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="different-view" style="display:none;" >
+            <p id="text1" hidden>
+                סגל ועדת המשמעת שלום, 
+                <br>
+                לפני מספר ימים קמתי בבוקר, שמתי גרביים וגיליתי ש{e}! אתם מאמינים?
+                <br>
+                בחלומות הכי גרועים שלי לא תיארתי שזה יכול לקרות.
+                <br>
+                אל תשכחו שזו בסך הכל השנה ה{b} שלי בלימודים ואני עובד ב{c} עבודות במקביל!
+                <br>
+                אני פונה ללב שלכם שתתעשתו ותבינו ש{d} ותסלחו לי. 
+                <br>
+                אני הייתי {a} אתם הייתם אתם
+            </p>
+            <p id="text2" hidden>
+                בוקר טוב!!
+                <br>
+                שוב אנחנו נפגשים,{a} וועדת המשמעת. למען האמת לא התגעגעתי. 
+                <br>
+                הפעם אין לי סבלנות בכלל, שוב זה קרה. שוב {e} ונמאס לי! פשוט נמאס לי! כל פעם ש{e} כל האשמה נופלת עליי!
+                <br>
+                אני לא אוותר הפעם ואלחם בכל כוחי כדי להוכיח לכם ש {e} כי אם יש משהו שלמדתי זה {d} .
+            </p>
+            <p id="text3" hidden>
+            חברי ועדת המשמעת שלום.
+            <br>
+            שמי {a} ואני מודה! אני מודה ש{e}!!!
+            <br>
+            לא התכוונתי לעשות זאת ובכל {b} שנות לימודי לא קרה לי דבר כה מטלטל.
+            אני בעצמי עדיין בהלם מהאירוע ואפילו הלילה ישנתי רק {c} שעות. 
+            לא מאחל אירוע כזה לשונאיי.
+            <br>
+            מקווה  שנתראה בשמחות ו{d}
+            </p>
+            <p id="text4" hidden>
+                אהלן לכולם,<br>
+            אני יודע ש{e} אבל בבקשה מכם, תעשו TRY וזרקו לי איזה עצם כדי שאוכל לתפוס יותר טוב בפעם הבאה.
+            </p>
+            <p id="text5" hidden>
+                כן, אני לא טלית שכולה תכלת. אבל בואו ניקח רגע דברים בפרופורציות, זה לא שלא היו לי דרישות מינימום!<br>
+                 כולה {e} וזה כל מה שזה היה. חכם הודי פעם אמר לי {d}
+                וכידוע {c} הודים לא טועים.  
+                <br>
+                מקווה לראות אתכם קצת יותר שמחים בשנה ה {b} שלי!
+            </p>
+            <p id="text6" hidden>
+                ערב טוב וחג שמח,
+                <br>
+                אז חזרתי עכשיו משבועיים במדבר וזו הייתה חוויה משנת חיים. באחד הלילות כשישנתי עם גמל, זה הכה בי: {d} 
+                <br>
+                ואז הבנתי שבין אם אלמד {b} שנים או 10 שנים, זה לא ישנה את העובדה ש{e}
+                אז אתם יודעים מה? תאמינו או אל תאמינו העיקר שאני יודע את האמת ש{e}
+                <br>
+                נמסטה, {a}
+            </p>
+            <p id="text7" hidden>
+                שוב אנחנו נפגשים. {a} וועדת המשמעת.
+                <br>
+                האמת שהתגעגתי. לא יצא לנו להיפגש מאז השנה ה {b} שלי.
+                <br>
+                הרבה השתנה מאז והיום אני דוגל ב {d}. אז בואו נאמר אז מה?! 
+                אז מה ש{e} ונצא לדרך חדשה כי כמו שאמרתי {d}.
+                <br>
+                תודה, ותתעלמו משאר {c} העותקים שנשלחו במייל.
+            </p>
+            <p id="text8" hidden>
+                יש 10 סוגים של אנשים בעולם הזה:
+                <br>
+                1. אלה שמאמינים לי
+                <br>
+                10. אלה שמשקרים
+                <br>
+                אני יודע שאתם מהסוג הראשון, אז בואו נשים את זה מאחורינו ו {d}
+            </p>
+            <p id="text9" dir="ltr" hidden>                  
+                ~$ DELETE VAADAT MISHMAAT
+                ~$ WHAT?! NO!
+                ~$ SUDO DELETE VAADAT MISHMAAT
+                ~$ OK
+            </p>
+            <button type="button" action="http://se.shenkar.ac.il/teach/web1/get_form3.php" class="btn btn-primary mx-auto d-block" id="again" onClick="window.location.reload();">הושעת, נסה שוב</button>
+        </div>
+    </body>
+</html>

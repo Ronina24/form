@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main,
+article,
+header,
+footer,
+section,
+nav,
+aside {
+  display: block;
+}
+
+.btn-primary {
+  width: 20%;
+  margin: auto;
+  margin-top: 20px;
+  font-size: larger;
+  background-color: palevioletred;
+  border-color: pink;
+}
+
+.btn-primary:hover {
+  background-color: pink;
+  border-color: plum;
+  color: black;
+}
+
+label {
+  font-weight: bold;
+}
+
+body {
+  margin-top: 20px;
+}
